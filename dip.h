@@ -48,6 +48,7 @@ public:
         Gray = 0,
         Reverse,
         HistEqu,
+        Smooth,
         AlgorithmCount
     };
     // Define a variabel.
@@ -69,6 +70,7 @@ public slots: // slots function is called when signal is trigged in QML.
 private: // This object is uesd to excecute logic operation
     ImageProcessorPrivate *m_d;
 };
+
 
 
 

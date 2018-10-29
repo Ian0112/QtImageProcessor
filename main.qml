@@ -15,8 +15,10 @@ Always Visibale elements
 
     Button {
         id: exit
-        x: 101
+        x: 100
         y: 0
+        width: 100
+        height: 40
         text: "Exit"
         onClicked: {
             Qt.quit()
@@ -66,15 +68,18 @@ Always Visibale elements
 
     ToolBar {
         id: toolBar
-        x: 259
+        x: 206
         y: 0
-        width: 360
+        width: 434
+        height: 40
+        position: ToolBar.Header
+        contentWidth: 0
 
         ToolButton {
             id: gray
             x: 0
             y: 0
-            width: 71
+            width: 94
             height: 40
             text: qsTr("gray")
             onClicked: {
@@ -86,12 +91,37 @@ Always Visibale elements
 
         ToolButton {
             id: reverse
-            x: 77
+            x: 75
             y: 0
+            width: 75
             text: qsTr("reverse")
             onClicked: {
                 console.log("reverse")
                 processor.process(fileDialogs.fileUrl, Dip.Reverse)
+            }
+        }
+
+        ToolButton {
+            id: histEqu
+            x: 150
+            y: 0
+            width: 75
+            text: qsTr("histEqu")
+            onClicked: {
+                console.log("reverse")
+                processor.process(fileDialogs.fileUrl, Dip.HistEqu)
+            }
+        }
+
+        ToolButton {
+            id: smooth
+            x: 225
+            y: 0
+            width: 75
+            text: qsTr("smooth")
+            onClicked: {
+                console.log("smooth")
+                processor.process(fileDialogs.fileUrl, Dip.Smooth)
             }
         }
     }

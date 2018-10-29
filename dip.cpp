@@ -62,6 +62,13 @@ void Dip::process(QString fileUrl, ImageAlgorithm algorithm)
     case HistEqu:
     {
         qDebug("HistEqu");
+        _histEqu(filepath, tmp_path);
+        break;
+    }
+    case Smooth:
+    {
+        qDebug("HistEqu");
+        _smooth(filepath, tmp_path);
         break;
     }
     default:
