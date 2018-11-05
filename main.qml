@@ -37,8 +37,14 @@ Always Visibale elements
             fileDialogs.visible = true
         }
     }
-
-
+    /*
+    Text {
+        id: test_text
+        x: 34
+        y: 51
+        text: imageViewer.status == imageViewer.Ready ? 'Loaded' : 'Not loaded'
+    }
+    */
     Image {
         objectName: "imageViewer";
         id: imageViewer;
@@ -48,7 +54,18 @@ Always Visibale elements
         anchors.fill: parent;
         fillMode: Image.PreserveAspectFit;
 
-        onStatusChanged: {
+        onStatusChanged:{
+            console.log("\n onStateChanged \n")
+            if (imageViewer.status === Image.Loading){
+                busyProcessImage.running = true
+            }
+            else if(imageViewer.status === Image.Ready){
+                busyProcessImage.running = false
+            }
+
+        }
+
+ /*       onStatusChanged: {
             if (imageViewer.status === Image.Loading) {
             //    busy.running = true;
                 stateLabel.visible = false;
@@ -61,8 +78,9 @@ Always Visibale elements
                 stateLabel.visible = true;
                 stateLabel.text = "ERROR";
             }
-        }
 
+        }
+*/
     }
 
 
@@ -130,6 +148,14 @@ Always Visibale elements
 /*
     Temporary visibale elements
 */
+    BusyIndicator{
+        id: busyProcessImage
+        running: false
+        anchors.centerIn: parent
+        z: 2
+    }
+
+
     // The element used to get file url
     FileDialog {
         id: fileDialogs;
@@ -148,6 +174,7 @@ Logic elements
         onFinished: {
             console.log("Process is finished.")
             imageViewer.source = "file:/" ; // if no this line, the picture will not refreshed.
+            // If the picture is small, the above line doesn't work to refresh the picture.
             imageViewer.source = "file:///" +newFile;
         }
     }

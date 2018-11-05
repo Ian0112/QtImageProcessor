@@ -62,13 +62,13 @@ signals:
     void finished(QString newFile);
 
 public slots: // slots function is called when signal is trigged in QML.
-    // The signals function just is declared here. Its implemention is also in C++ source file.
+    // The slots function just is declared here. Its implemention is also in C++ source file.
 
     void process(QString fileUrl, ImageAlgorithm algorithm);
 
 
 private: // This object is uesd to excecute logic operation
-    ImageProcessorPrivate *m_d;
+  //  ImageProcessorPrivate *m_d;
 };
 
 
