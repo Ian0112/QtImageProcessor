@@ -6,21 +6,36 @@
 #include <QString>
 #include <QUrl>
 #include <QDir>
+#include <QRunnable>
+#include <QThread>
+
 //  This class is uesd to provide logic operation
 class ImageProcessorPrivate : public QObject
 {
 public:
 
-    ImageProcessorPrivate(Dip *processor)
+
+    ImageProcessorPrivate(Dip* processor):m_processor(processor)
     {}
     ~ImageProcessorPrivate()
     {}
 
     QString m_tempPath;
-    // This class have a memeber which is an object of Dip class
-    Dip* processor;
 
+    /* This class have a memeber which is an object of Dip class.
+     * This memeber is used to implement method in Dip.
+     *
+     *  And in the implemetation of method in Dip,
+     * it just need to use object of ImageProcessorPrivate class to
+     * call ImageProcessorPrivate class' method.
+     *
+     */
+    Dip* m_processor;
+    //TODO
 };
+
+
+
 
 
 /*
@@ -87,3 +102,5 @@ Dip::Dip(QObject *parent):QObject(parent)  // constructor
 
 Dip::~Dip() // Destructor
 {}
+
+

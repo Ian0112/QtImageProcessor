@@ -3,7 +3,9 @@
 #include <QObject>
 #include <QString>
 
-//  This class is uesd to provide logic operation
+//  This class is uesd to provide logic operation.
+//  Actually this class is used to hide private variables and methods because header file is often accessed by user.
+//  This is a common practice.
 class ImageProcessorPrivate;
 
 // This class is used to provide UI.
@@ -67,8 +69,8 @@ public slots: // slots function is called when signal is trigged in QML.
     void process(QString fileUrl, ImageAlgorithm algorithm);
 
 
-private: // This object is uesd to excecute logic operation
-  //  ImageProcessorPrivate *m_d;
+private: // This object is uesd to excecute logic operation and hide private variables and method.
+    ImageProcessorPrivate *m_d;
 };
 
 
